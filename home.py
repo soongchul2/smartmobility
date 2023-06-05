@@ -1,28 +1,36 @@
 import streamlit as st
+from PIL import Image
 
-st.write('# Hi! Welcome to My App!')
+#Calculate BMI APP
+#INPUT (Weight, Height)
 
-st.write('Nice to meet you. Welcome to My App~!')
+def bmi_range(bmi):
+    if bmi >= 25:
+        st.error('HOLY MOLY~!! FAT')
+    elif bmi >= 23:
+        st.warning('Oops...A Little Fat')
+    elif bmi >= 18.5:
+        st.success('HOW GOOD~!')
+    else:
+        st.warning('Oops...TOO THIN')
 
 
-if st.button('Say hello'):
-    st.write('Why hello there')
-else:
-    st.write('Goodbye')
+st.write('# Calculate BMI!!')
+st.subheader('자신의 몸무게(kg)를 키의 제곱(m)으로 나눈 값으로 계산합니다.')
 
+height = st.number_input('height (cm)', 100, 200, 170, 5)
+st.write('Your height :', height, 'cm')
 
-option = st.selectbox(
-    'Which animal do you like?',
-    ('Dog', 'Cat', 'Horse' , 'Rabbit' , 'Elephant'))
+weight = st.number_input('weight (kg)', value = 50, step = 5)
+st.write('Your weight :',weight, 'kg')
 
-st.write('My favorite animal is', option , ', Yeah~')
-st.write(f'My favorite animal is {option}, Yeah~')
+bmi = weight/((height/100)**2)
 
-txt = st.text_area('Please Introduce yourself.', '''
-    
-    ''')
+if st.button('Calculate'):
+    st.write('Your BMI is', round(bmi,2),', HOHO~')
+    bmi_range(bmi)
+    st.balloons()
 
-st.write('Contents :', txt)
+image = Image.open('vegies.jpg')
 
-age = st.slider('Choose your age.', 0, 130, 22)
-st.write("I'm ", age, 'years old')
+st.image(image, caption = 'Vegitables with Paprika!')
