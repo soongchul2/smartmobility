@@ -104,6 +104,11 @@ def play_game():
             st.session_state.player_hand = None
             st.session_state.dealer_hand = None
             st.session_state.deck = None
+    
+    if st.button('Again!!'):
+        st.session_state.player_hand = None
+        st.session_state.dealer_hand = None
+        st.session_state.deck = None
 
 # 메인 앱
 def main():
