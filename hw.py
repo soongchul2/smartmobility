@@ -578,7 +578,7 @@ h = 0.05                               # Step size
 X,Y = integrate(F,x,y,xStop,h)
 yExact = 100.0*X - 5.0*X**2 + 990.0*(np.exp(-0.1*X) - 1.0)
 
-plt.plot(X,Y[:,0],'o',X,yExact,'-')오늘 학습 태도를 점검하며 잘한 점과 반성할 점에 대해 스스로 생각해보기
+plt.plot(X,Y[:,0],'o',X,yExact,'-')
 plt.grid(True)
 plt.xlabel('x'); plt.ylabel('y')
 plt.legend(('Numerical','Exact'),loc=0)
