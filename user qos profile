@@ -1,0 +1,17 @@
+from rclpy.qos import QoSDurabilityPolicy
+from rclpy.qos import QoSHistoryPolicy
+from rclpy.qos import QoSProfile
+from rclpy.qos import QoSReliabilityPolicy
+
+#custom
+QOS_RKL10V = QoSProfile(
+  reliability=QoSReliabilityPolicy.RELIABLE,
+  history=QoSHistoryPolicy.KEEP_LAST,
+  depth=10,
+  durability=QoSDurabilityPolicy.VOLATILE)
+
+'''
+when publisher -> create_publisher --> rmw_qos_profile
+
+self.sensor_publisher = self.create_publisher(Int8MultiArray, 'sensor', QOS_RKL10V)
+'''
